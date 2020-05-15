@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>小米商城导航栏示例</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        /*去掉a标签链接下划线和前面的.*/
+        a {
+            text-decoration: none;
+            color: white;
+        }
+
+        ul {
+            list-style-type: none;
+        }
+
+        .nav-left li {
+            float: left;
+            padding-right: 15px;
+        }
+
+        .nav-right {
+            float: right;
+            padding-right: 15px;
+        }
+
+        .nav {
+            background-color: black;
+            padding: 15px 0;
+        }
+
+        .percent_80 {
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        /*清除浮动带来分副作用--父标签坍塌*/
+        .cleafix:after,
+        .cleafix:before {
+            content: '';
+            display: block;
+            clear: both;
+        }
+
+
+    </style>
+</head>
+<body>
+
+<div class="nav cleafix">
+    <div class="percent_80">
+        <div class="nav-left">
+            <ul>
+                <li><a href="">玉米商城</a></li>
+                <li><a href="">小米</a></li>
+                <li><a href="">大米</a></li>
+                <li><a href="">红米</a></li>
+                <li><a href="">黑米</a></li>
+                <li><a href="">花生油</a></li>
+            </ul>
+        </div>
+        <div class="nav-right">
+            <a href="">登录</a>
+            <a href="">注册</a>
+            <a href="">购物车</a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>form表单示例</title>
+</head>
+<body>
+<!--注册示例-->
+<form action="http://127.0.0.1:8000/upload/" method="post" enctype="multipart/form-data">
+    <p>用户名：
+        <!--name：提交给服务器时，当键值对的key-->
+        <input name="username" type="text">
+    </p>
+
+    <p>密码：
+        <input name="password" type="password">
+    </p>
+
+    <p>性别：
+        <!--单选框-->
+        <!--value:提交给服务器时键值对的值-->
+        <input name="gender" type="radio" value="1">男
+        <input name="gender" type="radio" value="0">女
+    </p>
+
+    <p>性别2：
+        <!--单选框-->
+        <!--value:提交给服务器时键值对的值-->
+        <!--for的值与id之一一对应-->
+        <label for="man">男</label>
+        <input id="man" name="gender" type="radio" value="1">
+
+        <label for="woman">女</label>
+        <input id="woman" name="gender" type="radio" value="0">
+    </p>
+
+    <p>性别3：
+        <!--单选框-->
+        <!--value:提交给服务器时键值对的值-->
+        <!--for的值与id之一一对应-->
+        <label>男
+            <input name="gender" type="radio" value="1">
+        </label>
+
+        <label>女
+            <input name="gender" type="radio" value="0">
+        </label>
+    </p>
+
+    <p>爱好：
+        <!--复选框-->
+        <!--hobby:[1,2,3]列表-->
+        <input name="hobby" type="checkbox" value="basketball">篮球
+        <input name="hobby" type="checkbox" value="football">足球
+        <input name="hobby" type="checkbox" value="swimming">游泳
+    </p>
+
+    <p>生日
+        <input name="birthday" type="date">
+    </p>
+    <div>区域
+        <select name="city" id="select1">
+            <option value="bj">北京</option>
+            <option value="sh">上海</option>
+            <option value="gz">广州</option>
+            <option value="sz">深圳</option>
+        </select>
+
+        <select name="area" id="select2">
+            <optgroup label="北京">
+                <option value="cp">昌平</option>
+                <option value="cy">朝阳</option>
+                <option value="hd">海淀</option>
+                <option value="ft">丰台</option>
+            </optgroup>
+
+            <optgroup label="上海">
+                <option value="pdxq">浦东新区</option>
+                <option value="mhq">闵行区</option>
+                <option value="hpq">黄浦区</option>
+            </optgroup>
+
+            <optgroup label="广州">
+                <option value="pyq">番禺区</option>
+                <option value="thq">天河区</option>
+                <option value="hpq">黄浦区</option>
+                <option value="zjxc">珠江新城</option>
+            </optgroup>
+
+            <optgroup label="深圳">
+                <option value="bgq">宝岗区</option>
+                <option value="sk">蛇口</option>
+            </optgroup>
+        </select>
+    </div>
+
+    <!--文本框-->
+    <p><textarea name="info" id="textarea1" cols="30" rows="10">
+
+    </textarea></p>
+
+    <!--文件-->
+    <p>头像：
+        <input name="logo" type="file">
+    </p>
+
+    <p>提交：
+        <input type="submit" value="提交">
+    </p>
+
+    <p>button：
+        <input type="button" value="button">
+    </p>
+
+    <p>reset：
+        <input type="reset" value="reset">
+    </p>
+
+
+
+</form>
+</body>
+</html>

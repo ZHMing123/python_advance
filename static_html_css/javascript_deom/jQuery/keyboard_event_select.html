@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>键盘相关事件-select上下线control联动</title>
+</head>
+
+<body>
+    <table border="1" id="t1">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>姓名</th>
+                <th>年龄</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>zhming</td>
+                <td>23</td>
+                <td>
+                    <select>
+                        <option value="1">上线</option>
+                        <option value="2">下线</option>
+                        <option value="3">离线</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>root</td>
+                <td>root</td>
+                <td>
+                    <select>
+                        <option value="1">上线</option>
+                        <option value="2">下线</option>
+                        <option value="3">离线</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>ubuntu</td>
+                <td>10</td>
+                <td>
+                    <select>
+                        <option value="1">上线</option>
+                        <option value="2">下线</option>
+                        <option value="3">离线</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>ubuntu</td>
+                <td>10</td>
+                <td>
+                    <select>
+                        <option value="1">上线</option>
+                        <option value="2">下线</option>
+                        <option value="3">离线</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>ubuntu</td>
+                <td>10</td>
+                <td>
+                    <select>
+                        <option value="1">上线</option>
+                        <option value="2">下线</option>
+                        <option value="3">离线</option>
+                    </select>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+<script src="jquery-3.4.1.min.js"></script>
+<script>
+    // 给文档绑定 监听键盘被按下的事件
+    var $bodyEle = $("body");
+    var mode = false;
+    $bodyEle.on("keydown", function (event) {
+        //
+        console.log(event.keyCode);
+        if (event.keyCode === 17) {
+            // control按下，进入批量操作模式
+            mode = true;
+        }
+    })
+
+    // 按键抬起时，退出批量操作模式
+    $bodyEle.on("keyup", function (event) {
+        //
+        console.log(event.keyCode);
+        if (event.keyCode === 17) {
+            // control抬起，退出批量操作模式
+            mode = false;
+        }
+    })
+
+    // select联动
+    // 获取所有input的checkbox，找到checked为true的
+    // 获取第一个的值，将其他的值设为与第一个值一致
+    $("select").on("change", function () {
+        // 取到当前select的值
+        var value = $(this).val();
+        console.log(value);
+        console.log("=====================================");
+
+        // 找到select对应的checkbox  :checkbox表示找到所有的checkbox
+        var $thisCheckbox = $(this).parent().siblings().first().find(":checkbox");
+        console.log($thisCheckbox[0]);
+
+        // 判断当前select对应的checkbox有没有被选中，是否是批量操作
+        if ($thisCheckbox.prop("checked") && mode) {
+            // 真正进入批量操作模式
+            var $checkEles = $(":checked");     // 找到所有被选中的checkbox
+            for (var i=0; i<$checkEles.length; i++) {
+                // 找到checkbox对应的同一行的select
+                $($checkEles[i]).parent().siblings().last().find("select").val(value);
+            }
+        }
+    })
+</script>
+</body>
+
+</html>

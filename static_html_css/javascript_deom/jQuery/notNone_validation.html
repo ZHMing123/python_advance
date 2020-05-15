@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>用户名不能为空示例</title>
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<!--注册示例-->
+<form action="">
+    <p>
+        <label>用户名：
+            <!--name：提交给服务器时，当键值对的key-->
+            <input class="need" name="username" type="text">
+            <span class="error"></span>
+        </label>  
+    </p>
+
+    <p>
+        <label>密码：
+            <input class="need" name="password" type="password">
+            <span class="error"></span>
+        </label>
+    </p>
+    <p>
+        <input id="btn1" type="submit" value="登录">
+        <input id="cancel" type="button" value="取消">
+    </p>
+</form>
+
+<script src="jquery-3.4.1.min.js"></script>
+<script>
+    // 点击登录按钮时验证用户名和密码不能为空
+    // 为空就在input标签下面显示一个错误提示
+
+    // 1、给登录按钮绑定事件
+    // 2、点击事件要做的事
+    // 2.1 找到input标签--> 取值 --> 判断是否为空 --> .length是否为0
+
+    $("#btn1").click(function () {
+        var $needElems = $(".need");  // 所有需要验证的标签
+        // 定义一个标志位
+        var flag = true;
+        for (var i=0;i<$needElems.length;i++) {  // 循环判断每个input
+            if ($($needElems[i]).val().trim().length === 0) {
+                // 动态获取每个input父标签p的标签内容
+                // var labelName = $($needElems[i]).parent().text().trim();
+                var labelName = $($needElems[i]).parent().prop ('firstChild').nodeValue.trim().slice(0,-1);
+                console.log(labelName);
+                $($needElems[i]).next().text("*" + labelName +"不能为空!");
+                
+                flag = false;
+                break;
+            }
+        };
+
+        // return false; 阻止后续事件执行，即为空时，submit不能提交
+        return flag;
+    })
+</script>
+
+</body>
+</html>

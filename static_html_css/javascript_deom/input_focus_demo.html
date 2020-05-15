@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>搜索框聚焦-失焦示例</title>
+</head>
+
+<body>
+    <input id="input1" type="text" value="zhming">
+    <input type="button" value="搜素">
+
+    <script>
+        // 找到input框
+        var inputEle = document.getElementById("input1");
+
+        // 聚焦
+        inputEle.onfocus = function () {
+            // 把默认值清空
+            this.value = "";
+        }
+
+        // 失焦
+        inputEle.onblur = function () {
+            // 失去焦点后，如果值为空，把默认值填回去
+            if (!this.value.trim()) {
+                this.value = "zhming";
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>

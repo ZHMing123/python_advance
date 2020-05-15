@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>左菜单栏示例</title>
+    <!--css样式-->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            text-decoration: none;
+        }
+
+        .hide {
+            display: none;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="left-menu">
+    <div class="menu-title">菜单一</div>
+    <div class="menu-items hide">
+        <ul>
+            <li><a href="">111</a></li>
+            <li><a href="">222</a></li>
+            <li><a href="">333</a></li>
+        </ul>
+    </div>
+    <div class="menu-title">菜单二</div>
+    <div class="menu-items hide">
+        <ul>
+            <li><a href="">111</a></li>
+            <li><a href="">222</a></li>
+            <li><a href="">333</a></li>
+        </ul>
+    </div>
+    <div class="menu-title">菜单三</div>
+    <div class="menu-items hide">
+        <ul>
+            <li><a href="">111</a></li>
+            <li><a href="">222</a></li>
+            <li><a href="">333</a></li>
+        </ul>
+    </div>
+</div>
+
+<script src="jquery-3.4.1.min.js"></script>
+<script>
+    // 需求分析
+    // 方法一：
+    // 找到所有.menu-title标签，绑定事件
+    // $(".menu-title").click(function () {
+    //     // 1、找到当前点击菜单下面的.menu-items，把它显示出来（移除hide类）
+    //     $(this).next().removeClass("hide");
+    //     // 2、把其他的.menu-items隐藏，添加hide类
+    //     $(this).next().siblings(".menu-items").addClass("hide");
+    // })
+
+    // 方法二：
+    $(".menu-title").click(function () {
+        // 1、找到所有.menu-items，隐藏
+        $(".menu-items").addClass("hide");
+        // 2、当前点击菜单下面的.menu-items，把它显示出来
+        $(this).next().removeClass("hide");
+    })
+</script>
+</body>
+</html>

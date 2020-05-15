@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>点击在表格最后添加一条记录</title>
+</head>
+
+<body>
+    <table border="1" id="t1">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>姓名</th>
+                <th>年龄</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>zhming</td>
+                <td>23</td>
+                <td>
+                    <button class="delete">删除</button>
+                </td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>root</td>
+                <td>root</td>
+                <td>
+                    <button class="delete">删除</button>
+                </td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>ubuntu</td>
+                <td>10</td>
+                <td>
+                    <button class="delete">删除</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <button id="b1">添加一行数据</button>
+
+    <script src="jquery-3.4.1.min.js"></script>
+
+    <script>
+        // 给按钮绑定事件
+        $("#b1").click(function () {
+            // 生成要添加的tr标签
+            var trEle = document.createElement("tr");
+            $(trEle).html("<td>4</td>" +
+                "<td>@root</td>" +
+                "<td>@</td>" + 
+                "<td><button class='delete'>删除</button></td>");
+            // 把生成的标签添加到表格中
+            // $("#t1 tbody").append(trEle);
+            $("#t1").find("tbody").append(trEle);
+        })
+
+        // // 删除操作
+        // $(".delete").click(function () {
+        //     // console.log($(this));
+        //     // 删除对应的行
+        //     // console.log($(this).parent().parent());
+        //     // remove():删除本身和子标签； empty():清空子标签，本身还保留
+        //     $(this).parent().parent().remove();
+            
+        // })
+
+        // 事件委托(给未来的标签绑定事件)on("click", 选择器, function(){})
+        // 事件冒泡：子标签不处理事件时，往父标签抛
+        $("tbody").on("click", ".delete", function() {
+            console.log($(this));
+            // remove():删除本身和子标签； empty():清空子标签，本身还保留
+            $(this).parent().parent().remove();
+        })
+    </script>
+</body>
+
+</html>

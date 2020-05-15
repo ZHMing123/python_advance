@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>全选和反选</title>
+</head>
+<body>
+
+<table border="2px solid gray;" cellpadding="1px solid">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>姓名</th>
+            <th>职业</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><input type="checkbox"></td>
+            <td>zhming</td>
+            <td>student</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox"></td>
+            <td>root</td>
+            <td>root</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox"></td>
+            <td>ubuntu</td>
+            <td>teacher</td>
+        </tr>
+    </tbody>
+</table>
+
+<input type="button" id="b1" value="全选">
+<input type="button" id="b2" value="反选">
+<input type="button" id="b3" value="取消">
+</body>
+
+<script src="jquery-3.4.1.min.js"></script>
+<script>
+    // 点击全选，表格中所有的checkbox都选中
+    // 1、找checkbox
+    // 2、全部选中 --> prop("checked", true)
+    $("#b1").click(function () {
+        $(":checkbox").prop("checked", true);
+    });
+
+    // 点击取消
+    // 1、找checkbox
+    // 2、全部不选中 --> prop("checked", false)
+    $("#b3").click(function () {
+        $(":checkbox").prop("checked", false);
+    });
+
+    // 点击反选
+    // 1、找checkbox
+    // 2、判断
+    // 2.1 没选中的，都选中
+    // 2.2 选中的，不选中
+    $("#b2").click(function () {
+        // 找到所有的checkbox
+        var $checkboxEles = $(":checkbox");
+        for (var i=0;i<$checkboxEles.length;i++) {
+            var $tmp = $($checkboxEles[i]);
+            if ($tmp.prop("checked")) {  // 返回true或者false
+                $tmp.prop("checked", false);
+            }else {
+                $tmp.prop("checked", true);
+            }
+        }
+    });
+
+</script>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>返回顶部示例</title>
+    <style>
+        * {
+            margin: 0;
+        }
+
+        .c1 {
+            width: 100px;
+            height: 200px;
+            background-color: red;
+        }
+
+        .hide {
+            display: none;
+        }
+
+        .c2 {
+            height: 50px;
+            width: 50px;
+            background-color: cornflowerblue;
+            position: fixed;
+            bottom: 15px;
+            right: 15px;
+        }
+
+        .c3 {
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+<button id="b1" class="btn btn-default">点我</button>
+<div class="c1"></div>
+<div class="c3">11</div>
+<div class="c3">22</div>
+<div class="c3">33</div>
+<div class="c3">44</div>
+<div class="c3">55</div>
+<div class="c3">66</div>
+<div class="c3">77</div>
+<div class="c3">88</div>
+<div class="c3">99</div>
+<div class="c3">1010</div>
+<div class="c3">1111</div>
+<div class="c3">1212</div>
+<div class="c3">1313</div>
+<div class="c3">1414</div>
+<div class="c3">1515</div>
+<div class="c3">1616</div>
+<div class="c3">1717</div>
+<div class="c3">1818</div>
+<div class="c3">1919</div>
+<div class="c3">2020</div>
+
+<button id="b2" class="btn btn-default c2 hide">返回顶部</button>
+
+<script src="jquery-3.4.1.min.js"></script>
+<script>
+    // 判断是否显示返回顶部框
+    $(window).scroll(function () {
+        if ($(window).scrollTop() > 100) {
+            $("#b2").removeClass("hide");
+        }
+        else {
+            $("#b2").addClass("hide");
+        }
+    });
+
+    // 点击返回顶部按钮
+    $("#b2").click(function () {
+        $(window).scrollTop(0);
+    })
+</script>
+
+</body>
+</html>
